@@ -11,7 +11,9 @@ public class FraudMicroServiceService {
     private final FraudMicroServiceRepository fraudMicroServiceRepository;
     public Object addNewClient(FraudMicroServiceModel fraudMicroServiceModel) {
 
-        return fraudMicroServiceRepository.saveAndFlush(fraudMicroServiceModel);
+         fraudMicroServiceRepository.saveAndFlush(fraudMicroServiceModel);
+
+         return false;
 
     }
 }
