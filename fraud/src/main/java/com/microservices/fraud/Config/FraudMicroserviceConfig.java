@@ -2,6 +2,6 @@ package com.microservices.fraud.Config;
 
 import org.springframework.context.annotation.Configuration;
 
-//@Configuration
+@Configuration
 public class FraudMicroserviceConfig {
 }

@@ -2,7 +2,7 @@ server:
   port: 8081
 spring:
   application:
-    name: fraud_micro_service
+    name: fraud
   datasource:
     password: root
     url: jdbc:postgresql://localhost:5432/fraud
@@ -19,5 +19,5 @@ eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka
-#    fetch-registry: true
-#    register-with-eureka: true
+    fetch-registry: true
+    register-with-eureka: true

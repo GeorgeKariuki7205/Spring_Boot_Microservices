@@ -40,11 +40,10 @@ public class CustomerMicroServiceService {
         HashMap request = new HashMap();
         request.put("customerId", customerMicroServiceModel2.getId());
 
-        restTemplate.postForObject(
-        "http://CUSTOMER_MICRO_SERVICE/api/v1/fraud_reporting",
+        restTemplate.postForLocation(
+        "http://FRAUD/api/v1/fraud_reporting",
                 request,
                 FraudCheckResponse.class
-
         );
         return this.gettingALlCustomersInApplication();
     }

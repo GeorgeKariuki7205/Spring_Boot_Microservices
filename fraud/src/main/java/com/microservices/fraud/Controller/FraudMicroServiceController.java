@@ -29,4 +29,10 @@ public class FraudMicroServiceController {
 
     }
 
+    @GetMapping
+    public Boolean samplePost(){
+        return true;
+    }
+
+
 }
