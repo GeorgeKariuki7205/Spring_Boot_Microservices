@@ -1,18 +1,19 @@
 server:
-  port: 8083
+  port: 8082
 spring:
   application:
     name: notifications
   datasource:
     password: root
-    url: jdbc:postgresql://localhost:5432/notifications
+#    url: jdbc:postgresql://localhost:5432/notifications
+    url: jdbc:mysql://localhost:3306/spring_microservices_notification
     username: root
   jpa:
     hibernate:
       ddl-auto: create
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
+#        dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
     show-sql: true
 eureka:

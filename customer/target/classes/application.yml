@@ -5,14 +5,15 @@ spring:
     name: customer
   datasource:
     password: root
-    url: jdbc:postgresql://localhost:5432/customers
+#    url: jdbc:postgresql://localhost:5432/customers
+    url: jdbc:mysql://localhost:3306/spring_microservices_customer
     username: root
   jpa:
     hibernate:
       ddl-auto: create
     properties:
       hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
+#        dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
     show-sql: true
 eureka:

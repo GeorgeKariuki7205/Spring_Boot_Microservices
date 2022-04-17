@@ -1,7 +1,8 @@
 package com.microservices.customer.Service;
 
 import com.microservices.clients.fraud.FraudClient;
-import com.microservices.customer.Config.CustomerMicroServiceConfiguration;
+//import com.microservices.customer.Config.CustomerMicroServiceConfiguration;
+import com.microservices.clients.notifications.NotificationClient;
 import com.microservices.customer.FraudMicroserviceResponse.FraudCheckResponse;
 import com.microservices.customer.Model.CustomerMicroServiceModel;
 import com.microservices.customer.Repository.CustomerMicroserviceRepository;
@@ -23,8 +24,9 @@ public class CustomerMicroServiceService {
 //    DiscoveryClient discoveryClient;
 
     private final CustomerMicroserviceRepository customerMicroserviceRepository;
-    private final RestTemplate restTemplate;
+//    private final RestTemplate restTemplate;
     private final FraudClient fraudClient;
+    private final NotificationClient notificationClient;
     public Object addNewClient(CustomerMicroServiceModel customerMicroServiceModel) {
 
 //        This function adds the application customers used to save the application
@@ -45,6 +47,14 @@ public class CustomerMicroServiceService {
         Map data = new HashMap<>();
         data.put("customerId",customerMicroServiceModel2.getId());
         fraudClient.addingRequestToDatabase(data);
+
+        Map newNotificationHashMap = new HashMap<>();
+        newNotificationHashMap.put("fist_name", "fist_name");
+        newNotificationHashMap.put("last_name", "last_name");
+        newNotificationHashMap.put("type_of_notification", "sms");
+        newNotificationHashMap.put("send_notification", true);
+
+        notificationClient.notification(newNotificationHashMap);
 
 
 
