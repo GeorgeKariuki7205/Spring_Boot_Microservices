@@ -1,5 +1,6 @@
 package com.microservices.customer.Service;
 
+import com.microservices.clients.fraud.FraudClient;
 import com.microservices.customer.Config.CustomerMicroServiceConfiguration;
 import com.microservices.customer.FraudMicroserviceResponse.FraudCheckResponse;
 import com.microservices.customer.Model.CustomerMicroServiceModel;
@@ -23,6 +24,7 @@ public class CustomerMicroServiceService {
 
     private final CustomerMicroserviceRepository customerMicroserviceRepository;
     private final RestTemplate restTemplate;
+    private final FraudClient fraudClient;
     public Object addNewClient(CustomerMicroServiceModel customerMicroServiceModel) {
 
 //        This function adds the application customers used to save the application
@@ -40,11 +42,12 @@ public class CustomerMicroServiceService {
         HashMap request = new HashMap();
         request.put("customerId", customerMicroServiceModel2.getId());
 
-        restTemplate.postForLocation(
-        "http://FRAUD/api/v1/fraud_reporting",
-                request,
-                FraudCheckResponse.class
-        );
+        Map data = new HashMap<>();
+        data.put("customerId",customerMicroServiceModel2.getId());
+        fraudClient.addingRequestToDatabase(data);
+
+
+
         return this.gettingALlCustomersInApplication();
     }
 
